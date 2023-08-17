@@ -1,0 +1,28 @@
+---------------------------------------------
+PIC ASSEMBLER LISTING
+Line    Address Opcode  Instruction
+---------------------------------------------
+0001    0000            ;Main Programm---------------------------------------------------
+0002    0000            Start
+0003    0000    1683                                bsf STATUS , RP0
+0004    0001    30FF                                movlw b'11111111' 
+0005    0002    0086                                movwf TRISB
+0006    0003                                        
+0007    0003    30FE                                movlw b'11111110'
+0008    0004    0086                                movwf TRISB
+0009    0005    1283                                bcf STATUS , RP0
+0010    0006            MainLoop
+0011    0006    1D06                                btfss PORTB,2
+0012    0007    1D86                                btfss PORTB,3
+0013    0008    280C                                goto Button_Is_Off
+0014    0009            Button_Is_On
+0015    0009    1686                                bsf PORTB,5
+0016    000A    1606                                bsf PORTB,4
+0017    000B    2806                                goto MainLoop
+0018    000C            Button_Is_Off
+0019    000C    1E86                                btfss PORTB,5
+0020    000D    1E06                                btfss PORTB,4
+0021    000E    2806                                goto MainLoop
+0022    000F                                        end
+---------------------------------------------
+Number of errors = 0
